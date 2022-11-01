@@ -1,0 +1,33 @@
+{
+  "name": "blog-demo",
+  "version": "1.0.0",
+  "description": "A simple blog platform based on Handlebars, Sequelize, Express, and Node. Create an account to log in, post, and comment on posts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gordon-Magill/Blog-Demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gordon-Magill/Blog-Demo/issues"
+  },
+  "homepage": "https://github.com/Gordon-Magill/Blog-Demo#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
