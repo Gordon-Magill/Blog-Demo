@@ -1,0 +1,59 @@
+// Import models to associate
+const Comment = require('./Comment')
+const Post = require('./Post')
+// const PostComment = require('./PostComment')
+const User = require('./User')
+
+
+Comment.belongsTo(Post,{
+    onDelete: 'CASCADE'
+})
+
+Comment.hasOne(User, {
+    
+})
+
+Post.hasOne(User, {
+
+})
+
+User.belongsToMany(Post, {
+
+})
+
+User.belongsToMany(Comment, {
+
+})
+
+// // import models
+// const Product = require("./Product");
+// const Category = require("./Category");
+// const Tag = require("./Tag");
+// const ProductTag = require("./ProductTag");
+
+// // Products belongsTo Category
+// Product.belongsTo(Category, {
+//   foreignKey: "category_id",
+// });
+
+// // Categories have many Products
+// Category.hasMany(Product, {
+//   // onDelete: 'CASCADE',
+// });
+
+// // Products belongToMany Tags (through ProductTag)
+// Product.belongsToMany(Tag, {
+//   through: "product_tag",
+// });
+
+// // Tags belongToMany Products (through ProductTag)
+// Tag.belongsToMany(Product, {
+//   through: "product_tag",
+// });
+
+// module.exports = {
+//   Product,
+//   Category,
+//   Tag,
+//   ProductTag,
+// };

@@ -1,0 +1,27 @@
+[
+  {
+    "author_id": "1",
+    "creation_time": "1667580945",
+    "post_content": "FiRsT pOsT!1!!!!"
+  },
+  {
+    "author_id": "2",
+    "creation_time": "1667580955",
+    "post_content": "Secondpost Secondpost"
+  },
+  {
+    "author_id": "3",
+    "creation_time": "1667580965",
+    "post_content": "Thirdpost Thirdpost Thirdpost Thirdpost"
+  },
+  {
+    "author_id": "4",
+    "creation_time": "1667580975",
+    "post_content": "Fourthpost Fourthpost Fourthpost Fourthpost"
+  },
+  {
+    "author_id": "5",
+    "creation_time": "1667580985",
+    "post_content": "Fifthpost Fifthpost Fifthpost Fifthpost Fifthpost "
+  }
+]
