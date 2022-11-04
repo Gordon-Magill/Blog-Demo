@@ -20,8 +20,16 @@ Comment.init(
         key: "id",
       },
     },
+    post_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "post",
+        key: "id",
+      },
+    },
     creation_time: {
-      type: DataTypes.DATE,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     content: {
@@ -30,8 +38,8 @@ Comment.init(
       defaultValue: "",
       validate: {
         isAlphanumeric: true,
-        len: [1, 2E3]
-      }
+        len: [1, 2e3],
+      },
     },
   },
   {

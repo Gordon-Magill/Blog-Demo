@@ -6,11 +6,11 @@ const User = require('./User')
 
 
 Comment.belongsTo(Post,{
-    onDelete: 'CASCADE'
+    // onDelete: 'CASCADE'
 })
 
-Comment.hasOne(User, {
-    
+Post.hasMany(Comment, {
+    onDelete: 'CASCADE'
 })
 
 Post.hasOne(User, {
@@ -18,42 +18,11 @@ Post.hasOne(User, {
 })
 
 User.belongsToMany(Post, {
-
+    onDelete: 'CASCADE'
 })
 
 User.belongsToMany(Comment, {
-
+    onDelete: 'CASCADE'
 })
 
-// // import models
-// const Product = require("./Product");
-// const Category = require("./Category");
-// const Tag = require("./Tag");
-// const ProductTag = require("./ProductTag");
-
-// // Products belongsTo Category
-// Product.belongsTo(Category, {
-//   foreignKey: "category_id",
-// });
-
-// // Categories have many Products
-// Category.hasMany(Product, {
-//   // onDelete: 'CASCADE',
-// });
-
-// // Products belongToMany Tags (through ProductTag)
-// Product.belongsToMany(Tag, {
-//   through: "product_tag",
-// });
-
-// // Tags belongToMany Products (through ProductTag)
-// Tag.belongsToMany(Product, {
-//   through: "product_tag",
-// });
-
-// module.exports = {
-//   Product,
-//   Category,
-//   Tag,
-//   ProductTag,
-// };
+module.exports = { Comment, Post, User };

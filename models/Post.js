@@ -23,7 +23,7 @@ Post.init(
       },
     },
     creation_time: {
-      type: DataTypes.DATE,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     content: {
