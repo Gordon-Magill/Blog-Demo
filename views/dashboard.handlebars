@@ -1,1 +1,11 @@
 <h1>Dashboard</h1>
+
+{{#if sess.logged_in}}
+  <form>
+    <label for="newPostTextArea">Create a new post:</label><br>
+    <textarea id="newPostTextArea" name="newPostTextArea" rows="4" cols="50">
+    </textarea><br>
+    <button id="submitPostButton">Submit new post</button>
+  </form>
+
+{{/if}}

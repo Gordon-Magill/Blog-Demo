@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { NOW } = require('sequelize');
+// const { NOW } = require('sequelize');
 const Post = require('../../models/Post')
 const User = require('../../models/User')
-const moment = require('moment')
+// const moment = require('moment')
 
 
 router.get('/', async (req,res) => [
@@ -10,7 +10,8 @@ router.get('/', async (req,res) => [
 ])
 
 // Create new post
-router.post('/post/create', async (req,res) => {
+router.post('/create', async (req,res) => {
+    console.log('\nroute api/post/create called!\n')
     try {
         let writingUser = await User.findOne({
             where: {
@@ -20,6 +21,7 @@ router.post('/post/create', async (req,res) => {
     
         writingUser = writingUser.get({plain: true})
         console.log('writingUser: ',writingUser)
+        console.log('Date.now():', Date.now())
     
         const newPost = await Post.create({
             author_id: writingUser.id,
