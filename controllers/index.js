@@ -5,7 +5,10 @@ const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 
 router.get('/', async (req,res) => {
-    const allPosts = await Post.findAll()
+    let allPosts = await Post.findAll({})
+    allPosts = allPosts.map(row => row.get({plain:true}))
+    console.log(allPosts)
+    // allPosts = allPosts.get({plain: true})
     res.render('homepage', {
         allPosts,
         sess: req.session,
