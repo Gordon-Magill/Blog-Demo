@@ -15,5 +15,5 @@ async function logoutHelper() {
   }
 }
 
-const logoutThings = $(".logout");
+const logoutThings = $("#logout");
 logoutThings.on("click", logoutHelper);

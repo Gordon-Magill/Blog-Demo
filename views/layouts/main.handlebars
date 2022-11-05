@@ -5,9 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to the blogosphere!</title>
+    <style href="/css/public.css"></style>
 </head>
 <body>
-    {{> nav}}
-    {{{body}}}
+  {{> nav}}
+
+  {{{body}}}
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {{!-- Custom JS --}}
+  <script src="/js/login.js"></script>
+  <script src="/js/logout.js"></script>
+
+
 </body>
 </html>
