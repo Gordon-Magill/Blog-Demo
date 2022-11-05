@@ -25,6 +25,8 @@ async function loginHelper(event) {
 
     // If the supplied credentials were OK, send the user back to the home page
     if (loginRequest.ok) {
+
+      
       document.location.replace("/");
     } else {
       alert("Bad login credentials, please try again");

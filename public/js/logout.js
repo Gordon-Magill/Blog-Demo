@@ -8,7 +8,7 @@ async function logoutHelper() {
   });
 
   // Assuming there were no problems, send the user back to the home page
-  if (logoutRequest.isApproved) {
+  if (logoutRequest.ok) {
     document.location.replace("/");
   } else {
     alert("Logout failed. Please contact site admin.");

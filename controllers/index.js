@@ -4,7 +4,9 @@ const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 
 router.get('/', async (req,res) => {
-    res.render('homepage', {})
+    res.render('homepage', {
+        sess: req.session,
+    })
 })
 
 router.get('/dashboard', async (req,res) => {

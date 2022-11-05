@@ -3,7 +3,8 @@
     <a href="/">Home</a>
     <a href="/dashboard">Dashboard</a>
 
-    {{#if loggedIn}}
+    {{#if sess.logged_in}}
+    <p>Hello {{sess.user_id}}</p>
     <a href="#" id="logout">Logout placeholder</a>
     
     {{else}}
