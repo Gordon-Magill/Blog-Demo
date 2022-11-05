@@ -11,11 +11,12 @@ User.init(
       primaryKey: true,
       allowNull: false,
     },
-    email: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmail: true
+        isAlphanumeric: true,
+        len: [3,20]
       }
     },
     password: {

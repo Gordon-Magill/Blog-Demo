@@ -1,0 +1,11 @@
+<nav>
+    <h1>Test nav title</h1>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    {{#if loggedIn}}
+    <a href="/logout">Logout placeholder</a>
+    {{else}}
+    <a href="/loginSignUp">Login placeholder</a>
+    <a href="/loginSignUp">SignUp placeholder</a>
+    {{/if}}
+</nav>

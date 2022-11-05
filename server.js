@@ -1,5 +1,5 @@
-// Boilerplate content largely copied from class materials
-// const path = require('path');
+// Boilerplate content largely grabbed from class materials
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
