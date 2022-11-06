@@ -13,7 +13,7 @@ async function postSubmission() {
     });
     
     if (postRequest.ok) {
-        document.location.replace("/");
+        document.location.replace("/dashboard");
     } else {
         alert('Post sumission failed, bad server response to page')
     }
