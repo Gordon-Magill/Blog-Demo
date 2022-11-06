@@ -1,8 +1,14 @@
-<h2>Test post please ignore</h2>
+<h2>{{Post.title}}</h2>
+<h5>Posted by: {{Post.user.username}}</h5>
+<h5>{{formatDate Post.creation_time}}</h5>
 <p>{{Post.content}}</p>
 
 {{#each Post.comments as |comment|}}
-<p>Comment #{{@index}}, created at {{comment.creation_time}}:</p>
+<p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
 <p>{{comment.content}}</p>
-
 {{/each}}
+
+{{#if sess.logged_in}}
+
+
+{{/if}}

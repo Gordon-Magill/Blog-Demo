@@ -1,5 +1,7 @@
+const moment = require('moment')
+
 function formatDate(date){
-    return date.toLocaleDateString()
+    return moment(date).format('DD MMM, Y')
 }
 
 function textSummary(text) {

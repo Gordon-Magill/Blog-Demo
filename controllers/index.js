@@ -27,7 +27,7 @@ router.get('/post/:id', async (req,res) => {
         where: {
             id: parseInt(req.params.id)+1
         },
-        include: [{model: Comment}]
+        include: [{model: Comment}, {model: User}]
     })
     console.log('onePost:', onePost)
     plainPost = onePost.get({plain:true})
