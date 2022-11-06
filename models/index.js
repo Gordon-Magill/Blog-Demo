@@ -12,7 +12,6 @@ Comment.belongsTo(Post,{
     foreignKey: 'post_id'
 })
 
-
 // Post.hasOne(User, {
 
 // })

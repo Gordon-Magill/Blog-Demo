@@ -1,2 +1,8 @@
 <h2>Test post please ignore</h2>
-<p>{{onePost.content}}</p>
+<p>{{Post.content}}</p>
+
+{{#each Post.comments as |comment|}}
+<p>Comment #{{@index}}, created at {{comment.creation_time}}:</p>
+<p>{{comment.content}}</p>
+
+{{/each}}

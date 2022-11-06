@@ -36,7 +36,7 @@ Comment.init(
       allowNull: false,
       defaultValue: "",
       validate: {
-        isAlphanumeric: true,
+        // isAlphanumeric: true,
         len: [1, 2e3],
       },
     },

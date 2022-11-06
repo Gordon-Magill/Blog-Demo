@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const Post = require('../models/Post');
-const Comment = require('../models/Comment');
+const {Post, Comment} = require('../models/index')
 
 const apiRoutes = require('./api');
 
@@ -18,16 +17,18 @@ router.get('/', async (req,res) => {
 })
 
 router.get('/post/:id', async (req,res) => {
-    let onePost = await Post.findOne({
+    console.log('Post page rendering route called!')
+    const onePost = await Post.findOne({
         where: {
-            id: req.params.id+1
+            id: parseInt(req.params.id)+1
         },
         include: [{model: Comment}]
     })
-    onePost = onePost.get({plain:true})
-    console.log('onePost:',onePost)
+    console.log('onePost:', onePost)
+    plainPost = onePost.get({plain:true})
+    console.log('plainPost:',plainPost)
     res.render('post', {
-        onePost,
+        Post: plainPost,
         sess: req.session,
     })
 })
