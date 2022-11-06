@@ -1,16 +1,33 @@
 const router = require('express').Router();
 const Post = require('../models/Post');
+const Comment = require('../models/Comment');
+
 const apiRoutes = require('./api');
 
 router.use('/api', apiRoutes);
 
 router.get('/', async (req,res) => {
-    let allPosts = await Post.findAll({})
+    let allPosts = await Post.findAll()
     allPosts = allPosts.map(row => row.get({plain:true}))
     console.log(allPosts)
     // allPosts = allPosts.get({plain: true})
     res.render('homepage', {
         allPosts,
+        sess: req.session,
+    })
+})
+
+router.get('/post/:id', async (req,res) => {
+    let onePost = await Post.findOne({
+        where: {
+            id: req.params.id+1
+        },
+        include: [{model: Comment}]
+    })
+    onePost = onePost.get({plain:true})
+    console.log('onePost:',onePost)
+    res.render('post', {
+        onePost,
         sess: req.session,
     })
 })

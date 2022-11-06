@@ -1,8 +1,9 @@
-{{!-- Content for the front page --}}
+{{! Content for the front page }}
 <h2>Test homepage body</h2>
 
 {{#each allPosts as |post|}}
-<p>Post</p>
-<p>{{post.content}}</p>
-
+  <a href="/post/{{@index}}">
+    <p>Post {{@index}}</p>
+    <p>{{post.content}}</p>
+  </a>
 {{/each}}
