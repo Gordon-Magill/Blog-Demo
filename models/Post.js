@@ -23,6 +23,14 @@ Post.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+
     content: {
       type: DataTypes.STRING,
       allowNull: false,

@@ -15,7 +15,7 @@ router.post('/create', async (req,res) => {
     try {
         let writingUser = await User.findOne({
             where: {
-                username: req.session.user_id
+                username: req.session.username
             }
         })
     
@@ -26,6 +26,7 @@ router.post('/create', async (req,res) => {
         const newPost = await Post.create({
             author_id: writingUser.id,
             creation_time: Date.now(),
+            title: req.body.postTitle,
             content: req.body.postContent
         })
     

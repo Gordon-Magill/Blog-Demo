@@ -6,7 +6,9 @@ const apiRoutes = require('./api');
 router.use('/api', apiRoutes);
 
 router.get('/', async (req,res) => {
-    let allPosts = await Post.findAll()
+    let allPosts = await Post.findAll({
+        order: [["id", "ASC"]]
+      })
     allPosts = allPosts.map(row => row.get({plain:true}))
     console.log(allPosts)
     // allPosts = allPosts.get({plain: true})
@@ -34,9 +36,21 @@ router.get('/post/:id', async (req,res) => {
 })
 
 router.get('/dashboard', async (req,res) => {
+    console.log(req.session)
+    let allPosts = await Post.findAll({
+        where: {
+            author_id: req.session.user_id
+        },
+        order: [["id", "ASC"]]
+      })
+    allPosts = allPosts.map(row => row.get({plain:true}))
+    console.log(allPosts)
+    // allPosts = allPosts.get({plain: true})
     res.render('dashboard', {
+        allPosts,
         sess: req.session,
     })
+
 })
 
 router.get('/loginSignUp', async (req,res) => {
