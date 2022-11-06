@@ -30,14 +30,11 @@ Post.init(
         len: [1]
       }
     },
-
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT('long'),
       allowNull: false,
-      defaultValue: "",
       validate: {
-        isAlphanumeric: true,
-        len: [1,1E4]
+        len: [1,1e5]
       }
     },
   },

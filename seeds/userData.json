@@ -1,22 +1,27 @@
 [
   {
-    "username": "testUser1",
-    "password": "password12345"
+    "username": "user1",
+    "password": "$2b$10$Rka7ldyrmILlH4mKHVTmpO2rDoZt8taBY5ZcBI/WsnmhNZwJfFJUq"
   },
   {
-    "username": "testUser2",
-    "password": "password12345"
+    "username": "user2",
+    "password": "$2b$10$Rka7ldyrmILlH4mKHVTmpO2rDoZt8taBY5ZcBI/WsnmhNZwJfFJUq"
   },
   {
-    "username": "testUser3",
-    "password": "password12345"
+    "username": "user3",
+    "password": "$2b$10$Rka7ldyrmILlH4mKHVTmpO2rDoZt8taBY5ZcBI/WsnmhNZwJfFJUq"
   },
   {
-    "username": "testUser4",
-    "password": "password12345"
+    "username": "user4",
+    "password": "$2b$10$Rka7ldyrmILlH4mKHVTmpO2rDoZt8taBY5ZcBI/WsnmhNZwJfFJUq"
   },
   {
-    "username": "testUser5",
-    "password": "password12345"
+    "username": "user5",
+    "password": "$2b$10$Rka7ldyrmILlH4mKHVTmpO2rDoZt8taBY5ZcBI/WsnmhNZwJfFJUq"
+  },
+  {
+    "username": "user6",
+    "password": "$2b$10$Rka7ldyrmILlH4mKHVTmpO2rDoZt8taBY5ZcBI/WsnmhNZwJfFJUq"
   }
+
 ]

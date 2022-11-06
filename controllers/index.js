@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const {Post, Comment} = require('../models/index')
+const {Post, Comment, User} = require('../models/index')
+const moment = require('moment')
 
 const apiRoutes = require('./api');
 
@@ -7,6 +8,7 @@ router.use('/api', apiRoutes);
 
 router.get('/', async (req,res) => {
     let allPosts = await Post.findAll({
+        include: [{model: User}],
         order: [["id", "ASC"]]
       })
     allPosts = allPosts.map(row => row.get({plain:true}))
@@ -14,6 +16,7 @@ router.get('/', async (req,res) => {
     // allPosts = allPosts.get({plain: true})
     res.render('homepage', {
         allPosts,
+        // formattedTime: allPosts.map(post => moment(post.creation_time).format('MMM DD, Y')),
         sess: req.session,
     })
 })
@@ -36,6 +39,12 @@ router.get('/post/:id', async (req,res) => {
 })
 
 router.get('/dashboard', async (req,res) => {
+    // If the user isn't logged in, dump them back to the home page
+    if (!req.session.logged_in) {
+        res.status(403).redirect("/loginSignUp")
+        return;
+    }
+
     console.log(req.session)
     let allPosts = await Post.findAll({
         where: {
