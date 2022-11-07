@@ -9,23 +9,24 @@ function textSummary(text) {
   return text.slice(0, 100) + "...";
 }
 
-function authorIDtoUsername(id_val) {
-  const user = User.findOne({
-    where: {
-      id: id_val,
-    },
-  });
+// function authorIDtoUsername(id_val) {
+//   const user = User.findOne({
+//     where: {
+//       id: id_val,
+//     },
+//   });
 
-  user.then((userData) => {
-    console.log('userdata:',userData);
-    // const plainUser = user.get({plain:true})
+//   user.then((userData) => {
+//      const plainUser = userData.get({plain:true})
+//     console.log('plainUser:',plainUser);
+   
 
-    return userData.username;
-  });
-}
+//     return plainUser.username;
+//   });
+// }
 
 module.exports = {
   formatDate,
   textSummary,
-  authorIDtoUsername,
+//   authorIDtoUsername,
 };

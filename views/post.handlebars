@@ -4,14 +4,14 @@
 <p>{{Post.content}}</p>
 
 <h4>Comments:</h4>
-{{#each Post.comments as |comment|}}
+{{#each comments as |comment|}}
   {{!-- <p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
   <p>{{comment.content}}</p> --}}
 
   <div class="card customCard" style="width: 18rem;">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted">By:
-        {{authorIDtoUsername comment.author_id}}</h6>
+        {{comment.user.username}}</h6>
       <h6 class="card-subtitle mb-2 text-muted">Posted:
         {{formatDate post.creation_time}}</h6>
       <p class="card-text">{{comment.content}}</p>

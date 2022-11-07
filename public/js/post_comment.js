@@ -23,6 +23,40 @@ async function postSubmission() {
   }
 }
 
+async function postComment() {
+  console.log('\n\npostComment route activated!\n\n')
+  const commentContent = $('#newCommentTextArea').val().trim()
+  let post_id = window.location.href.split('/')
+  post_id = (post_id[post_id.length-1].split('?')[0])+1
+
+  if (commentContent.length > 1) {
+
+    console.log('Comment content to send for creation:', JSON.stringify({
+      content: commentContent,
+      post_id
+    }))
+
+    const postRequest = await fetch('/api/comment/create', {
+      method: 'POST',
+      body: JSON.stringify({
+        content: commentContent,
+        post_id}),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+
+    if (postRequest.ok) {
+      document.location.replace(window.location.href)
+    } else {
+      alert('Comment sumission failed, bad server response to page')
+    }
+  }
+}
+
 
 const submissionButton = $("#submitPostButton");
 submissionButton.on('click', postSubmission)
+
+const commentButton = $("#submitCommentButton");
+commentButton.on('click', postComment)

@@ -24,6 +24,7 @@ router.get("/", async (req, res) => {
   });
 });
 
+
 // Highlight of a single post with its comments
 router.get("/post/:id", async (req, res) => {
   console.log("Post page rendering route called!");
@@ -41,12 +42,25 @@ router.get("/post/:id", async (req, res) => {
   let plainPost = onePost.get({ plain: true });
   console.log("plainPost:", plainPost);
 
+  const comments = await Comment.findAll({
+    where: {
+      post_id: plainPost.id
+    },
+    include: [{model: User}]
+  })
+
+  const plainComments = comments.map(row => row.get({plain: true}))
+  console.log('plainComments: ',plainComments)
+
+
   //   Render the page with post and session information
   res.render("post", {
     Post: plainPost,
+    comments: plainComments,
     sess: req.session,
   });
 });
+
 
 // Dashboard for the user where they can make new posts
 router.get("/dashboard", async (req, res) => {
