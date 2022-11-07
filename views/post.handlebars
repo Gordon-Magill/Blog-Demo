@@ -3,12 +3,35 @@
 <h5>{{formatDate Post.creation_time}}</h5>
 <p>{{Post.content}}</p>
 
+<h4>Comments:</h4>
 {{#each Post.comments as |comment|}}
-<p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
-<p>{{comment.content}}</p>
+  {{!-- <p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
+  <p>{{comment.content}}</p> --}}
+
+  <div class="card customCard" style="width: 18rem;">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted">By:
+        {{authorIDtoUsername comment.author_id}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Posted:
+        {{formatDate post.creation_time}}</h6>
+      <p class="card-text">{{comment.content}}</p>
+    </div>
+  </div>
 {{/each}}
 
 {{#if sess.logged_in}}
-
+  <div class="row justify-content-start">
+    <form>
+      <label for="newCommentTextArea">Create a new comment:</label><br/>
+      <textarea
+        id="newCommentTextArea"
+        name="newCommentTextArea"
+        rows="4"
+        cols="50"
+        placeholder="Comment text"
+      ></textarea><br />
+      <button id="submitCommentButton">Submit new comment</button>
+    </form>
+  </div>
 
 {{/if}}
