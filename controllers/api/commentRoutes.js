@@ -7,7 +7,7 @@ router.get("/", async (req, res) => [
 
 // Create new comment
 router.post("/create", async (req, res) => {
-    console.log('\n\n/api/comment/create route called!\n\n')
+    console.log('\n***********\n/api/comment/create route called!\n***********\n')
   try {
     const commentBody = {
       content: req.body.content,
@@ -15,6 +15,8 @@ router.post("/create", async (req, res) => {
       post_id: req.body.post_id,
       creation_time: Date.now(),
     };
+
+    console.log('comment body to be created:', commentBody)
 
     const newComment = await Comment.create(commentBody);
 

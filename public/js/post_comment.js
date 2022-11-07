@@ -27,7 +27,7 @@ async function postComment() {
   console.log('\n\npostComment route activated!\n\n')
   const commentContent = $('#newCommentTextArea').val().trim()
   let post_id = window.location.href.split('/')
-  post_id = (post_id[post_id.length-1].split('?')[0])+1
+  post_id = parseInt(post_id[post_id.length-1].split('?')[0])+1
 
   if (commentContent.length > 1) {
 
