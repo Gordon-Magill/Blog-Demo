@@ -27,15 +27,15 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
-      }
+        len: [1],
+      },
     },
     content: {
-      type: DataTypes.TEXT('long'),
+      type: DataTypes.TEXT("long"),
       allowNull: false,
       validate: {
-        len: [1,1e5]
-      }
+        len: [1, 1e5],
+      },
     },
   },
   {

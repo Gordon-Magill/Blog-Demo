@@ -3,7 +3,7 @@ const router = require("express").Router();
 // const Post = require('../../models/Post')
 // const User = require('../../models/User')
 const { Post, User } = require("../../models/index");
-const moment = require('moment')
+const moment = require("moment");
 
 router.get("/", async (req, res) => [
   // Get all posts

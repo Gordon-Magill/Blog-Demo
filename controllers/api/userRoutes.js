@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {User} = require("../../models/index");
+const { User } = require("../../models/index");
 const bcrypt = require("bcrypt");
 
 // router.get("/", async (req, res) => {
@@ -29,12 +29,9 @@ router.post("/login", async (req, res) => {
 
     // If the hashes don't match, reject the request
     if (!pwTest) {
-      res
-        .status(400)
-        .json({
-          message:
-            "Incorrect username or password. Password failed hash check.",
-        });
+      res.status(400).json({
+        message: "Incorrect username or password. Password failed hash check.",
+      });
       return;
     }
 

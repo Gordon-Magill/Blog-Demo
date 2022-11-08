@@ -19,7 +19,6 @@ function textSummary(text) {
 //   user.then((userData) => {
 //      const plainUser = userData.get({plain:true})
 //     console.log('plainUser:',plainUser);
-   
 
 //     return plainUser.username;
 //   });
@@ -28,5 +27,5 @@ function textSummary(text) {
 module.exports = {
   formatDate,
   textSummary,
-//   authorIDtoUsername,
+  //   authorIDtoUsername,
 };

@@ -1,15 +1,13 @@
 async function loginHelper(event) {
   event.preventDefault();
-  console.log('loginHelper triggered!')
+  console.log("loginHelper triggered!");
   // Stop form submission from reloading the page
-  
 
   // Get values from the form
-  const username = $('#userFieldLogin').val().trim();
+  const username = $("#userFieldLogin").val().trim();
   const password = $("#passwordFieldLogin").val().trim();
-  console.log('username:', username)
-  console.log('password:', password)
-
+  console.log("username:", username);
+  console.log("password:", password);
 
   // If both credentials were supplied, make the login request to the server
   if (username && password) {
@@ -21,12 +19,10 @@ async function loginHelper(event) {
       },
     });
 
-    console.log(loginRequest)
+    console.log(loginRequest);
 
     // If the supplied credentials were OK, send the user back to the home page
     if (loginRequest.ok) {
-
-      
       document.location.replace("/");
     } else {
       alert("Bad login credentials, please try again");
@@ -49,12 +45,12 @@ async function signupHelper(event) {
       body: JSON.stringify({ newUsername, newPassword }),
       headers: {
         "Content-Type": "application/json",
-      }
+      },
     });
 
     // Assuming the credentials passed validation, send the user back to the homepage
     // ASSUMES CREATION ALSO LOGS IN THE USER
-    console.log(newUser)
+    console.log(newUser);
     if (newUser.ok) {
       document.location.replace("/");
     } else {
