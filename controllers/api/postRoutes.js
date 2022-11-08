@@ -20,8 +20,8 @@ router.post("/create", async (req, res) => {
     });
 
     writingUser = writingUser.get({ plain: true });
-    console.log("writingUser: ", writingUser);
-    console.log("Date.now():", Date.now());
+    // console.log("writingUser: ", writingUser);
+    // console.log("Date.now():", Date.now());
 
     const postContent = {
       author_id: writingUser.id,
@@ -44,6 +44,37 @@ router.post("/create", async (req, res) => {
 // Get individual post
 
 // Update individual post
+router.put("/edit/", async (req, res) => {
+  
+  console.log("\n**********\nPost edit route called\n**********\n");
+
+  try {
+    // Create the body of the post edit for logging
+    const editContent = {
+      author_id: req.session.user_id,
+      creation_time: Date.now(),
+      title: req.body.postTitle,
+      content: req.body.postContent,
+    };
+
+    // Log the content prior to actually editing the post
+    console.log("Edited post to write:", editContent);
+
+    // Update the post with new content
+    const editPost = await Post.update(editContent, {
+      where: {
+        id: req.body.postID,
+      },
+    });
+
+    // Send confirmatory info
+    res.status(200).json(editPost);
+  } catch (err) {
+    // Log and send any errors
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
 
 // Delete post
 

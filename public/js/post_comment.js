@@ -56,8 +56,43 @@ async function postComment() {
   }
 }
 
+async function editPost() {
+  // event.preventDefault()
+  console.log('editPost public js was called')
+  const postContent = $("#editPostTextArea").val().trim();
+  const postTitle = $("#editPostTitleInput").val().trim();
+  const editButton = $("#editPostButton");
+  console.log("Trying to edit post for the following text:", postContent);
+
+  if (postContent.length > 1) {
+    console.log('About to make edit request...')
+    const editRequest = await fetch("/api/post/edit", {
+      method: "PUT",
+      body: JSON.stringify({
+        postContent,
+        postTitle,
+        postID: editButton.attr('data-post'),
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (editRequest.ok) {
+      document.location.replace("/dashboard");
+    } else {
+      alert("Post edit failed, bad server response to page");
+    }
+  } else {
+    alert("No text in post content.");
+  }
+}
+
 const submissionButton = $("#submitPostButton");
 submissionButton.on("click", postSubmission);
 
 const commentButton = $("#submitCommentButton");
 commentButton.on("click", postComment);
+
+const editButton = $("#editPostButton");
+editButton.on("click", editPost);

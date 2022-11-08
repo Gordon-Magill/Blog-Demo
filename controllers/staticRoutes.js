@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   allPosts = allPosts.map((row) => row.get({ plain: true }));
 
   // Logs for debugging
-  console.log(allPosts);
+  // console.log(allPosts);
 
   //   Render the homepage content with the post information and session
   res.render("homepage", {
@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
 
 // Highlight of a single post with its comments
 router.get("/post/:id", async (req, res) => {
-  console.log("Post page rendering route called!");
+  // console.log("Post page rendering route called!");
 
   //   Get the post based on req.params
   const onePost = await Post.findOne({
@@ -37,9 +37,9 @@ router.get("/post/:id", async (req, res) => {
   });
 
   //   Debugging logs
-  console.log("onePost:", onePost);
+  // console.log("onePost:", onePost);
   let plainPost = onePost.get({ plain: true });
-  console.log("plainPost:", plainPost);
+  // console.log("plainPost:", plainPost);
 
   const comments = await Comment.findAll({
     where: {
@@ -49,13 +49,21 @@ router.get("/post/:id", async (req, res) => {
   });
 
   const plainComments = comments.map((row) => row.get({ plain: true }));
-  console.log("plainComments: ", plainComments);
+  // console.log("plainComments: ", plainComments);
+
+  let sameAuthor = false;
+  if (onePost.author_id === req.session.user_id) {
+    sameAuthor = true;
+  }
+    
+  
 
   //   Render the page with post and session information
   res.render("post", {
     Post: plainPost,
     comments: plainComments,
     sess: req.session,
+    sameAuthor,
   });
 });
 
@@ -80,7 +88,7 @@ router.get("/dashboard", async (req, res) => {
   allPosts = allPosts.map((row) => row.get({ plain: true }));
 
   //   Debugging logs
-  console.log(allPosts);
+  // console.log(allPosts);
 
   //   Render the page with posts and session info
   res.render("dashboard", {

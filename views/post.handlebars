@@ -3,6 +3,50 @@
 <h5>{{formatDate Post.creation_time}}</h5>
 <p>{{Post.content}}</p>
 
+{{#if sess.logged_in}}
+  <div class="row d-flex justify-content-around">
+    {{!-- The new comment box --}}
+    <div class="row justify-content-start">
+      <form>
+        <label for="newCommentTextArea">Create a new comment:</label><br />
+        <textarea
+          id="newCommentTextArea"
+          name="newCommentTextArea"
+          rows="4"
+          cols="50"
+          placeholder="Comment text"
+        ></textarea><br />
+        <button id="submitCommentButton">Submit new comment</button>
+      </form>
+    </div>
+    
+    {{!-- The edit post boxes --}}
+    {{#if sameAuthor}}
+      <div class="row justify-content-start">
+        <form>
+          <label for="editPostTextArea">Edit post:</label><br />
+          <input
+            type="text"
+            id="editPostTitleInput"
+            placeholder="Post title"
+            value="{{Post.title}}"
+          /><br />
+          <textarea
+            id="editPostTextArea"
+            name="editPostTextArea"
+            rows="4"
+            cols="50"
+            placeholder="Post body"
+          >{{Post.content}}</textarea><br />
+          <button id="editPostButton" data-post="{{Post.id}}">Confirm post edits</button>
+        </form>
+      </div>
+    {{/if}}
+    </div>
+
+{{/if}}
+
+<br />
 <h4>Comments:</h4>
 {{#each comments as |comment|}}
   {{!-- <p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
@@ -18,20 +62,3 @@
     </div>
   </div>
 {{/each}}
-
-{{#if sess.logged_in}}
-  <div class="row justify-content-start">
-    <form>
-      <label for="newCommentTextArea">Create a new comment:</label><br />
-      <textarea
-        id="newCommentTextArea"
-        name="newCommentTextArea"
-        rows="4"
-        cols="50"
-        placeholder="Comment text"
-      ></textarea><br />
-      <button id="submitCommentButton">Submit new comment</button>
-    </form>
-  </div>
-
-{{/if}}
