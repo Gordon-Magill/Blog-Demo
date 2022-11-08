@@ -1,3 +1,21 @@
 .customCard {
-    margin: 5px;
+  margin: 5px;
+}
+
+body {
+  background: rgb(192, 188, 249);
+  background: linear-gradient(
+    90deg,
+    rgba(192, 188, 249, 1) 0%,
+    rgba(255, 225, 158, 1) 100%
+  );
+}
+
+nav {
+  background: rgb(162, 155, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(162, 155, 255, 1) 0%,
+    rgba(255, 201, 81, 1) 100%
+  );
 }

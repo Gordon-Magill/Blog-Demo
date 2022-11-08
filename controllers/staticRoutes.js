@@ -32,7 +32,7 @@ router.get("/post/:id", async (req, res) => {
   //   Get the post based on req.params
   const onePost = await Post.findOne({
     where: {
-      id: parseInt(req.params.id) + 1,
+      id: parseInt(req.params.id),
     },
     include: [{ model: Comment }, { model: User }],
   });
@@ -76,6 +76,7 @@ router.get("/dashboard", async (req, res) => {
       author_id: req.session.user_id,
     },
     order: [["id", "ASC"]],
+    include: [{ model: User }],
   });
 
   //   Strip out extra sequelize content
