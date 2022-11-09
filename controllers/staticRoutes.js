@@ -36,15 +36,18 @@ router.get("/post/:id", async (req, res) => {
     include: [{ model: Comment }, { model: User }],
   });
 
+  // If no page of the right id is found, dump them back to the front page
+  if (onePost === null) {
+    res.status(304).redirect('/')
+    return;
+  }
+
   onePost = onePost.get({plain:true})
 
   //   Debugging logs
   console.log("onePost:", onePost);
 
-  if (onePost === null) {
-    res.status(304).redirect('/')
-    return;
-  }
+
   // console.log("plainPost:", plainPost);
 
   const comments = await Comment.findAll({
@@ -94,7 +97,7 @@ router.get("/dashboard", async (req, res) => {
   allPosts = allPosts.map((row) => row.get({ plain: true }));
 
   //   Debugging logs
-  // console.log(allPosts);
+  console.log(allPosts);
 
   //   Render the page with posts and session info
   res.render("dashboard", {

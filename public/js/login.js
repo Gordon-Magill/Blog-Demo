@@ -48,13 +48,23 @@ async function signupHelper(event) {
       },
     });
 
+    console.log(
+      "\n****************\n\n****************\n\n****************\nnewUser:",
+      newUser,
+      "\n****************\n\n****************\n\n****************\n"
+    );
+
     // Assuming the credentials passed validation, send the user back to the homepage
     // ASSUMES CREATION ALSO LOGS IN THE USER
     console.log(newUser);
     if (newUser.ok) {
       document.location.replace("/");
     } else {
-      alert("Credentials did not meet required criteria. Please try again.");
+      let errmsg =
+        "Credentials did not meet required criteria. Please try again.";
+      errmsg = `${errmsg}+\nServer says: ${newUser.errmsg}`;
+
+      alert(errmsg);
     }
   }
 }

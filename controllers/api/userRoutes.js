@@ -55,6 +55,20 @@ router.post("/login", async (req, res) => {
 router.post("/create", async (req, res) => {
   console.log("/api/user/create route was called!");
   try {
+    const sameUsername = User.findAll({
+      where:{
+        username: req.body.newUsername
+      }
+    })
+
+    if (sameUsername) {
+      let errJson = {error: true, errmsg: 'That username is taken, please select a different name.'}
+      console.log('That username is taken, please select a different name.')
+      res.status(401).json(errJson)
+      return;
+    }
+
+
     const newUser = {
       username: req.body.newUsername,
       // password: req.body.password
@@ -76,6 +90,9 @@ router.post("/create", async (req, res) => {
       res.status(200).json({ user: userData });
     });
   } catch (err) {
+    if (errJson) {
+      err = errJson
+    }
     console.log(err);
     res.status(400).json(err);
   }

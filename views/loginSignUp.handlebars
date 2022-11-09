@@ -1,24 +1,36 @@
-<form>
-  <h2>Log in</h2>
-  <label for="userFieldLogin">Username:</label><br />
-  <input type="text" id="userFieldLogin" name="userFieldLogin" /><br />
+<div class="row">
+  <div class="col-6">
+    <form class="mt-4 mx-1">
+      <h2>Log in</h2>
+      <label for="userFieldLogin">Username:</label><br />
+      <input type="text" id="userFieldLogin" name="userFieldLogin" class="form-control"/><br />
 
-  <label for="passwordFieldLogin">Password:</label><br />
-  <input type="password" id="passwordFieldLogin" name="passwordFieldLogin" /><br
-  />
-  <button id="loginButton">Log in</button>
-</form>
+      <label for="passwordFieldLogin">Password:</label><br />
+      <input
+        type="password"
+        id="passwordFieldLogin"
+        name="passwordFieldLogin"
+        class="form-control"
+      /><br />
+      <button id="loginButton" class="btn btn-primary">Log in</button>
+    </form>
 
-<form>
-  <h2>Sign Up</h2>
-  <label for="userFieldSignUp">Username:</label><br />
-  <input type="text" id="userFieldSignUp" name="userFieldSignUp" /><br />
+  </div>
 
-  <label for="passwordFieldSignUp">Password:</label><br />
-  <input
-    type="password"
-    id="passwordFieldSignUp"
-    name="passwordFieldSignUp"
-  /><br />
-  <button id="signupButton">Sign up</button>
-</form>
+  <div class="col-6">
+    <form class="mt-4 mx-1">
+      <h2>Sign Up</h2>
+      <label for="userFieldSignUp">Username:</label><br />
+      <input type="text" id="userFieldSignUp" name="userFieldSignUp" class="form-control"/><br />
+
+      <label for="passwordFieldSignUp">Password:</label><br />
+      <input
+        type="password"
+        id="passwordFieldSignUp"
+        name="passwordFieldSignUp"
+        class="form-control"
+      /><br />
+      <button id="signupButton" class="btn btn-success">Sign up</button>
+    </form>
+  </div>
+</div>
