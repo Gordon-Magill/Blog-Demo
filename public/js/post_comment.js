@@ -58,14 +58,14 @@ async function postComment() {
 
 async function editPost() {
   // event.preventDefault()
-  console.log('editPost public js was called')
+  // console.log('editPost public js was called')
   const postContent = $("#editPostTextArea").val().trim();
   const postTitle = $("#editPostTitleInput").val().trim();
   const editButton = $("#editPostButton");
   console.log("Trying to edit post for the following text:", postContent);
 
   if (postContent.length > 1) {
-    console.log('About to make edit request...')
+    // console.log('About to make edit request...')
     const editRequest = await fetch("/api/post/edit", {
       method: "PUT",
       body: JSON.stringify({
@@ -88,6 +88,25 @@ async function editPost() {
   }
 }
 
+async function deletePost(){
+  const deleteButton = $("#deletePostButton");
+  const deletePost = await fetch("/api/post/delete", {
+    method: "DELETE",
+    body: JSON.stringify({
+      postID: deleteButton.attr('data-post'),
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  if (deletePost.ok) {
+    document.location.replace("/dashboard");
+    } else {
+      alert("Post deletion failed, bad server response to page");
+  }
+}
+
 const submissionButton = $("#submitPostButton");
 submissionButton.on("click", postSubmission);
 
@@ -96,3 +115,6 @@ commentButton.on("click", postComment);
 
 const editButton = $("#editPostButton");
 editButton.on("click", editPost);
+
+const deleteButton = $("#deletePostButton");
+deleteButton.on("click", deletePost)

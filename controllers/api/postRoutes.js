@@ -2,7 +2,7 @@ const router = require("express").Router();
 // const { NOW } = require('sequelize');
 // const Post = require('../../models/Post')
 // const User = require('../../models/User')
-const { Post, User } = require("../../models/index");
+const { Post, User, Comment } = require("../../models/index");
 const moment = require("moment");
 
 router.get("/", async (req, res) => [
@@ -45,7 +45,6 @@ router.post("/create", async (req, res) => {
 
 // Update individual post
 router.put("/edit/", async (req, res) => {
-  
   console.log("\n**********\nPost edit route called\n**********\n");
 
   try {
@@ -77,5 +76,23 @@ router.put("/edit/", async (req, res) => {
 });
 
 // Delete post
+router.delete("/delete", async (req, res) => {
+  console.log(
+    `\n**********\n\n**********\nDelete post route called for postID ${req.body.postID}\n**********\n\n**********\n`
+  );
+
+  try {
+    const delPost = await Post.destroy({
+      where: {
+        id: parseInt(req.body.postID),
+      },
+    });
+
+    res.status(200).json(delPost)
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
 
 module.exports = router;
