@@ -1,28 +1,30 @@
 {{! New post form }}
 {{#if sess.logged_in}}
   <div class="d-flex col- flex-fill justify-content-around">
-    <div class="">
-      <form class="">
-        <div class="form-group">
-          <label for="newPostTextArea">Create a new post:</label>
-          <input
-            type="text"
-            id="newPostTitleInput"
-            placeholder="Post title"
+    <div class="card customCard mx-4 mt-3" style="width: 18rem;">
+      <div class="card-body">
+        <form class="">
+          <div class="form-group">
+            <label for="newPostTextArea">Create a new post:</label>
+            <input
+              type="text"
+              id="newPostTitleInput"
+              placeholder="Post title"
+              class="form-control"
+            />
+          </div>
+          <textarea
+            id="newPostTextArea"
+            name="newPostTextArea"
+            rows="4"
+            cols="50"
+            placeholder="Post body"
             class="form-control"
-          />
-        </div>
-        <textarea
-          id="newPostTextArea"
-          name="newPostTextArea"
-          rows="4"
-          cols="50"
-          placeholder="Post body"
-          class="form-control"
-        ></textarea>
-        <br />
-        <button id="submitPostButton" class="btn btn-primary">Submit new post</button>
-      </form>
+          ></textarea>
+          <br />
+          <button id="submitPostButton" class="btn btn-primary">Submit new post</button>
+        </form>
+      </div>
     </div>
   </div>
 {{/if}}
@@ -30,9 +32,9 @@
 <div class="col- flex-fill">
   {{! Intro to rest of your posts }}
   {{#if allPosts}}
-  <div class="row">
-    <h2>Your posts:</h2>
-  </div>
+    <div class="row">
+      <h1 class="mx-3">Your posts:</h1>
+    </div>
   {{/if}}
 
   {{! List of posts from the logged in user }}

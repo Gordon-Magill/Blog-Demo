@@ -5,10 +5,10 @@
 
 /* Adding a cool colored background */
 body {
-  background: rgb(30, 40, 215);
+  background: rgb(62, 71, 217);
   background: linear-gradient(
-    45deg,
-    rgba(30, 40, 215, 1) 0%,
+    90deg,
+    rgba(62, 71, 217, 1) 0%,
     rgba(244, 145, 107, 1) 51%,
     rgba(145, 255, 163, 1) 100%
   );
@@ -24,6 +24,12 @@ body {
   border: 2px solid rgba(0, 0, 0, 0);
   border-radius: 30px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
 }

@@ -1,21 +1,23 @@
 <div class="col-">
 
   {{! Basic information about the post }}
-  <div class="row px-2">
-    <h2>{{Post.title}}</h2>
-  </div>
+  <div class="customTextBox py-2 my-3 px-3">
+    <div class="row px-2">
+      <h2>{{Post.title}}</h2>
+    </div>
 
-  <div class="row px-2">
-    <h5>Posted by: {{Post.user.username}}</h5>
-  </div>
+    <div class="row px-2">
+      <h5>Posted by: {{Post.user.username}}</h5>
+    </div>
 
-  <div class="row px-2">
-    <h5>{{formatDate Post.creation_time}}</h5>
+    <div class="row px-2">
+      <h5>{{formatDate Post.creation_time}}</h5>
+    </div>
   </div>
 
   <div class="row px-3">
     <div class="d-flex flex-column col- customTextBox align-items-center">
-      <p class="lead pt-3">{{Post.content}}</p>
+      <p class="lead p-2">{{Post.content}}</p>
     </div>
   </div>
 
