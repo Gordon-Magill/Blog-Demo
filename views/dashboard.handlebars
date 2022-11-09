@@ -1,6 +1,6 @@
 {{! New post form }}
 {{#if sess.logged_in}}
-  <div class="d-flex col-md-4 col-sm-6 justify-content-center">
+  <div class="d-flex col- flex-fill justify-content-around">
     <div class="">
       <form class="">
         <div class="form-group">
@@ -27,11 +27,13 @@
   </div>
 {{/if}}
 
-<div class="col-">
+<div class="col- flex-fill">
   {{! Intro to rest of your posts }}
+  {{#if allPosts}}
   <div class="row">
     <h2>Your posts:</h2>
   </div>
+  {{/if}}
 
   {{! List of posts from the logged in user }}
   <div class="col- justify-content-center">

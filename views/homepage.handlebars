@@ -1,26 +1,29 @@
 {{! Content for the front page }}
-<div class="row justify-content-center">
-  <h2>Explore blog posts:</h2>
-</div>
+<div class="col-">
+  
+  <div class="row justify-content-center flex-fill">
+    <h2>Explore blog posts:</h2>
+  </div>
 
-<div class="row justify-content-center">
+  <div class="row justify-content-center flex-fill">
 
-  {{! Add cards for each post that's been submitted }}
-  {{#each allPosts as |post|}}
+    {{! Add cards for each post that's been submitted }}
+    {{#each allPosts as |post|}}
 
-    <a href="/post/{{post.id}}" class="">
-      <div class="card customCard" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{post.title}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">By:
-            {{post.user.username}}</h6>
-          <h6 class="card-subtitle mb-2 text-muted">Posted:
-            {{formatDate post.creation_time}}</h6>
-          <p class="card-text">{{textSummary post.content}}</p>
+      <a href="/post/{{post.id}}" class="">
+        <div class="card customCard" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">By:
+              {{post.user.username}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Posted:
+              {{formatDate post.creation_time}}</h6>
+            <p class="card-text">{{textSummary post.content}}</p>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
 
-  {{/each}}
+    {{/each}}
 
+  </div>
 </div>

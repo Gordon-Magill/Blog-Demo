@@ -78,8 +78,9 @@ router.get("/post/:id", async (req, res) => {
 
 // Dashboard for the user where they can make new posts
 router.get("/dashboard", loginCheck, async (req, res) => {
-  // console.log('\n**************\n\n**************\n\n**************\nDashboard route activated\n**************\n\n**************\n\n**************\n')
+  console.log('\n**************\n\n**************\n\n**************\nDashboard route activated\n**************\n\n**************\n\n**************\n')
 
+  console.log(req.session)
   // Get all posts from the logged in user
   let allPosts = await Post.findAll({
     where: {
