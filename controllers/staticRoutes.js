@@ -1,8 +1,9 @@
+// Imports
 const router = require("express").Router();
 const { Post, Comment, User } = require("../models/index");
-const moment = require("moment");
+const loginCheck = require("../utils/loginCheck");
 
-// Homepage
+// Homepage rendering
 router.get("/", async (req, res) => {
   // Get all posts to show on the front page
   let allPosts = await Post.findAll({
@@ -42,13 +43,13 @@ router.get("/post/:id", async (req, res) => {
     return;
   }
 
+  // Strip out extra sequelize content
   onePost = onePost.get({ plain: true });
 
-  //   Debugging logs
-  console.log("onePost:", onePost);
+  // Debugging logs
+  // console.log("onePost:", onePost);
 
-  // console.log("plainPost:", plainPost);
-
+  // Get all comments associated with the given post and their associated submitting users
   const comments = await Comment.findAll({
     where: {
       post_id: onePost.id,
@@ -56,15 +57,17 @@ router.get("/post/:id", async (req, res) => {
     include: [{ model: User }],
   });
 
+  // Strip out extra sequelize content
   const plainComments = comments.map((row) => row.get({ plain: true }));
   // console.log("plainComments: ", plainComments);
 
+  // Determine if the logged in user is the author of the post for conditional page rendering
   let sameAuthor = false;
   if (onePost.author_id === req.session.user_id) {
     sameAuthor = true;
   }
 
-  //   Render the page with post and session information
+  // Render the page with post and session information
   res.render("post", {
     Post: onePost,
     comments: plainComments,
@@ -74,14 +77,10 @@ router.get("/post/:id", async (req, res) => {
 });
 
 // Dashboard for the user where they can make new posts
-router.get("/dashboard", async (req, res) => {
-  // If the user isn't logged in, dump them back to the home page
-  if (!req.session.logged_in) {
-    res.status(403).redirect("/loginSignUp");
-    return;
-  }
+router.get("/dashboard", loginCheck, async (req, res) => {
+  // console.log('\n**************\n\n**************\n\n**************\nDashboard route activated\n**************\n\n**************\n\n**************\n')
 
-  //   Get all posts from the logged in user
+  // Get all posts from the logged in user
   let allPosts = await Post.findAll({
     where: {
       author_id: req.session.user_id,
@@ -90,13 +89,13 @@ router.get("/dashboard", async (req, res) => {
     include: [{ model: User }],
   });
 
-  //   Strip out extra sequelize content
+  // Strip out extra sequelize content
   allPosts = allPosts.map((row) => row.get({ plain: true }));
 
-  //   Debugging logs
+  // Debugging logs
   console.log(allPosts);
 
-  //   Render the page with posts and session info
+  // Render the page with posts and session info
   res.render("dashboard", {
     allPosts,
     sess: req.session,

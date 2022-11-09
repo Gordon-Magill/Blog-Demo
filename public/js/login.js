@@ -56,7 +56,7 @@ async function signupHelper(event) {
 
     // Assuming the credentials passed validation, send the user back to the homepage
     // ASSUMES CREATION ALSO LOGS IN THE USER
-    console.log(newUser);
+    // console.log("newUser", newUser);
     if (newUser.ok) {
       document.location.replace("/");
     } else {

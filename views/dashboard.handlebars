@@ -33,7 +33,7 @@
     <h2>Your posts:</h2>
   </div>
 
-  {{! List of posts }}
+  {{! List of posts from the logged in user }}
   <div class="col- justify-content-center">
 
     {{#each allPosts as |post|}}
@@ -48,9 +48,8 @@
           <h6 class="card-subtitle mb-2 text-muted">Posted:
             {{formatDate post.creation_time}}</h6>
           <p class="card-text">{{post.content}}</p>
-          {{! <button class="updateButton">Update post</button>
-              <button class="deleteButton">Delete post</button> }}
         </div>
       </div>
     {{/each}}
-  </div></div>
+  </div>
+</div>

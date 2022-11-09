@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="/css/public.css">
 </head>
 <body>
+  {{!-- Every page gets a navbar --}}
   {{> nav}}
 
+  {{!-- All content should be in a flex container --}}
   <div class="container d-flex flex-wrap justify-content-center">
     {{{body}}}
+    <footer class="d-flex"> &copy Gordon Magill 2022 </footer>
   </div>
-  
 
   {{!-- jQuery --}}
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -27,8 +29,6 @@
   <script src="/js/login.js"></script>
   <script src="/js/logout.js"></script>
   <script src="/js/post_comment.js"></script>
-
-
 
 </body>
 </html>

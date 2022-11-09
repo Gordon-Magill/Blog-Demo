@@ -1,3 +1,4 @@
+// Logs a user out
 async function logoutHelper() {
   // Make the request to the server to log the current user out
   const logoutRequest = await fetch("/api/user/logout", {
@@ -15,5 +16,6 @@ async function logoutHelper() {
   }
 }
 
+// Attaching event handler to the logout element
 const logoutThings = $("#logout");
 logoutThings.on("click", logoutHelper);

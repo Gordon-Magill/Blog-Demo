@@ -1,4 +1,6 @@
 <div class="col-">
+
+  {{! Basic information about the post }}
   <div class="row px-2">
     <h2>{{Post.title}}</h2>
   </div>
@@ -17,11 +19,12 @@
     </div>
   </div>
 
+  {{! Only show additional inputs if the user is logged in }}
   {{#if sess.logged_in}}
     <div class="row d-flex justify-content-around">
-      {{! The new comment box }}
 
-      <div class="card customCard mx-4" style="width: 18rem;">
+      {{! The new comment box }}
+      <div class="card customCard mx-4 mt-3" style="width: 18rem;">
         <div class="card-body">
           <form>
             <label for="newCommentTextArea">Create a new comment:</label><br />
@@ -88,13 +91,14 @@
   {{/if}}
 
   <br />
+
+  {{! Displaying the comments of the post (but only if they're present) }}
   {{#if comments}}
     <h4>Comments:</h4>
   {{/if}}
-  {{#each comments as |comment|}}
-    {{!-- <p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
-  <p>{{comment.content}}</p> --}}
 
+  {{! Rendering each comment }}
+  {{#each comments as |comment|}}
     <div class="card customCard" style="width: 18rem;">
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted">By:
