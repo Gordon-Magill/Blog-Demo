@@ -1,65 +1,105 @@
-<h2>{{Post.title}}</h2>
-<h5>Posted by: {{Post.user.username}}</h5>
-<h5>{{formatDate Post.creation_time}}</h5>
-<p>{{Post.content}}</p>
+<div class="col-">
+  <div class="row px-2">
+    <h2>{{Post.title}}</h2>
+  </div>
 
-{{#if sess.logged_in}}
-  <div class="row d-flex justify-content-around">
-    {{!-- The new comment box --}}
-    <div class="row justify-content-start">
-      <form>
-        <label for="newCommentTextArea">Create a new comment:</label><br />
-        <textarea
-          id="newCommentTextArea"
-          name="newCommentTextArea"
-          rows="4"
-          cols="50"
-          placeholder="Comment text"
-        ></textarea><br />
-        <button id="submitCommentButton">Submit new comment</button>
-      </form>
-    </div>
-    
-    {{!-- The edit post boxes --}}
-    {{#if sameAuthor}}
-      <div class="row justify-content-start">
-        <form>
-          <label for="editPostTextArea">Edit post:</label><br />
-          <input
-            type="text"
-            id="editPostTitleInput"
-            placeholder="Post title"
-            value="{{Post.title}}"
-          /><br />
-          <textarea
-            id="editPostTextArea"
-            name="editPostTextArea"
-            rows="4"
-            cols="50"
-            placeholder="Post body"
-          >{{Post.content}}</textarea><br />
-          <button id="editPostButton" data-post="{{Post.id}}">Confirm post edits</button>
-          <button id="deletePostButton" data-post="{{Post.id}}">Delete post</button>
-        </form>
-      </div>
-    {{/if}}
-    </div>
+  <div class="row px-2">
+    <h5>Posted by: {{Post.user.username}}</h5>
+  </div>
 
-{{/if}}
+  <div class="row px-2">
+    <h5>{{formatDate Post.creation_time}}</h5>
+  </div>
 
-<br />
-<h4>Comments:</h4>
-{{#each comments as |comment|}}
-  {{!-- <p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
-  <p>{{comment.content}}</p> --}}
-
-  <div class="card customCard" style="width: 18rem;">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted">By:
-        {{comment.user.username}}</h6>
-      <h6 class="card-subtitle mb-2 text-muted">Posted:
-        {{formatDate post.creation_time}}</h6>
-      <p class="card-text">{{comment.content}}</p>
+  <div class="row px-3">
+    <div class="d-flex flex-column col- customTextBox align-items-center">
+      <p class=" lead pt-3">{{Post.content}}</p>
     </div>
   </div>
-{{/each}}
+
+  {{#if sess.logged_in}}
+    <div class="row d-flex justify-content-around">
+      {{! The new comment box }}
+
+      <div class="card customCard mx-4" style="width: 18rem;">
+        <div class="card-body">
+          <form>
+            <label for="newCommentTextArea">Create a new comment:</label><br />
+            <textarea
+              id="newCommentTextArea"
+              name="newCommentTextArea"
+              rows="4"
+              cols="50"
+              placeholder="Comment text"
+              class="form-control"
+            ></textarea><br />
+            <button id="submitCommentButton" class="btn btn-primary" data-post="{{Post.id}}">Submit new
+              comment</button>
+          </form>
+          <p class="card-text">{{comment.content}}</p>
+        </div>
+      </div>
+
+      {{! The edit post boxes }}
+      {{#if sameAuthor}}
+        <div class="row justify-content-between">
+
+          <div class="card customCard mx-4" style="width: 18rem;">
+            <div class="card-body">
+              <form>
+                <label for="editPostTextArea">Edit post:</label><br />
+                <input
+                  type="text"
+                  id="editPostTitleInput"
+                  placeholder="Post title"
+                  value="{{Post.title}}"
+                  class="form-control"
+                /><br />
+                <textarea
+                  id="editPostTextArea"
+                  name="editPostTextArea"
+                  rows="4"
+                  cols="50"
+                  placeholder="Post body"
+                  class="form-control"
+                >{{Post.content}}</textarea><br />
+                <button
+                  id="editPostButton"
+                  data-post="{{Post.id}}"
+                  class="btn btn-primary"
+                >Confirm post edits</button>
+                <button
+                  id="deletePostButton"
+                  data-post="{{Post.id}}"
+                  class="btn btn-danger mt-2"
+                >Delete post</button>
+              </form>
+              <p class="card-text">{{comment.content}}</p>
+            </div>
+          </div>
+
+        </div>
+      {{/if}}
+    </div>
+
+  {{/if}}
+
+  <br />
+  {{#if comments}}
+  <h4>Comments:</h4>
+  {{/if}}
+  {{#each comments as |comment|}}
+    {{!-- <p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
+  <p>{{comment.content}}</p> --}}
+
+    <div class="card customCard" style="width: 18rem;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted">By:
+          {{comment.user.username}}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">Posted:
+          {{formatDate post.creation_time}}</h6>
+        <p class="card-text">{{comment.content}}</p>
+      </div>
+    </div>
+  {{/each}}
+</div>

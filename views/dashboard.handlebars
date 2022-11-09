@@ -1,53 +1,56 @@
-<div class="row justify-content-center">
-
-  <div class="col-4">
-    <h2>Your posts:</h2>
-    {{#each allPosts as |post|}}
-      <div class="row">
-        <div class="card-link">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <a href="/post/{{post.id}}">
-                <h5 class="card-title">{{post.title}}</h5>
-              </a>
-              <h6 class="card-subtitle mb-2 text-muted">By:
-                {{post.user.username}}</h6>
-              <h6 class="card-subtitle mb-2 text-muted">Posted:
-                {{formatDate post.creation_time}}</h6>
-              <p class="card-text">{{post.content}}</p>
-              {{! <button class="updateButton">Update post</button>
-              <button class="deleteButton">Delete post</button> }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
-    {{/each}}
-  </div>
-
-  <div class="col-4">
-    {{#if sess.logged_in}}
-      <br />
-      <div class="row justify-content-start">
-        <form>
-          <label for="newPostTextArea">Create a new post:</label><br />
+{{! New post form }}
+{{#if sess.logged_in}}
+  <div class="d-flex col-md-4 col-sm-6 justify-content-center">
+    <div class="">
+      <form class="">
+        <div class="form-group">
+          <label for="newPostTextArea">Create a new post:</label>
           <input
             type="text"
             id="newPostTitleInput"
             placeholder="Post title"
-          /><br />
-          <textarea
-            id="newPostTextArea"
-            name="newPostTextArea"
-            rows="4"
-            cols="50"
-            placeholder="Post body"
-          ></textarea><br />
-          <button id="submitPostButton">Submit new post</button>
-        </form>
-      </div>
+            class="form-control"
+          />
+        </div>
+        <textarea
+          id="newPostTextArea"
+          name="newPostTextArea"
+          rows="4"
+          cols="50"
+          placeholder="Post body"
+          class="form-control"
+        ></textarea>
+        <br>
+        <button id="submitPostButton" class="btn btn-primary">Submit new post</button>
+      </form>
+    </div>
+  </div>
+{{/if}}
 
-    {{/if}}
+<div class="col-">
+  {{! Intro to rest of your posts }}
+  <div class="row">
+    <h2>Your posts:</h2>
   </div>
 
-</div>
+  {{! List of posts }}
+  <div class="col- justify-content-center">
+
+    {{#each allPosts as |post|}}
+
+      <div class="card customCard" style="width: 18rem;">
+        <div class="card-body">
+          <a href="/post/{{post.id}}">
+            <h5 class="card-title">{{post.title}}</h5>
+          </a>
+          <h6 class="card-subtitle mb-2 text-muted">By:
+            {{post.user.username}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Posted:
+            {{formatDate post.creation_time}}</h6>
+          <p class="card-text">{{post.content}}</p>
+          {{! <button class="updateButton">Update post</button>
+              <button class="deleteButton">Delete post</button> }}
+        </div>
+      </div>
+    {{/each}}
+  </div></div>

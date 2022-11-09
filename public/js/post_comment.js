@@ -22,11 +22,13 @@ async function postSubmission() {
   }
 }
 
-async function postComment() {
-  console.log("\n\npostComment route activated!\n\n");
+async function postComment(event) {
+  event.preventDefault()
+  console.log("\n****************\n\n****************\n\n****************\npostComment route activated!\n****************\n\n****************\n\n****************\n");
   const commentContent = $("#newCommentTextArea").val().trim();
-  let post_id = window.location.href.split("/");
-  post_id = parseInt(post_id[post_id.length - 1].split("?")[0]) + 1;
+
+  let post_id = $("#submitCommentButton").attr('data-post')
+
 
   if (commentContent.length > 1) {
     console.log(

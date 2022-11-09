@@ -8,7 +8,7 @@ router.get("/", async (req, res) => [
 // Create new comment
 router.post("/create", async (req, res) => {
   console.log(
-    "\n***********\n/api/comment/create route called!\n***********\n"
+    "\n***********\n\n***********\n\n***********\n/api/comment/create route called!\n***********\n\n***********\n\n***********\n"
   );
   try {
     const commentBody = {

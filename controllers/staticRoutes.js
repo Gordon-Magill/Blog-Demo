@@ -29,12 +29,14 @@ router.get("/post/:id", async (req, res) => {
   // console.log("Post page rendering route called!");
 
   //   Get the post based on req.params
-  const onePost = await Post.findOne({
+  let onePost = await Post.findOne({
     where: {
       id: parseInt(req.params.id),
     },
     include: [{ model: Comment }, { model: User }],
   });
+
+  onePost = onePost.get({plain:true})
 
   //   Debugging logs
   console.log("onePost:", onePost);
@@ -43,12 +45,11 @@ router.get("/post/:id", async (req, res) => {
     res.status(304).redirect('/')
     return;
   }
-  let plainPost = onePost.get({ plain: true });
   // console.log("plainPost:", plainPost);
 
   const comments = await Comment.findAll({
     where: {
-      post_id: plainPost.id,
+      post_id: onePost.id,
     },
     include: [{ model: User }],
   });
@@ -65,7 +66,7 @@ router.get("/post/:id", async (req, res) => {
 
   //   Render the page with post and session information
   res.render("post", {
-    Post: plainPost,
+    Post: onePost,
     comments: plainComments,
     sess: req.session,
     sameAuthor,
