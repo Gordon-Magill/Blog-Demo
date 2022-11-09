@@ -82,13 +82,13 @@ router.delete("/delete", async (req, res) => {
   );
 
   try {
-// Get delete all comments that belong to the post
+    // Get delete all comments that belong to the post
 
     const delComments = await Comment.destroy({
       where: {
-        post_id: parseInt(req.body.postID)
-      }
-    })
+        post_id: parseInt(req.body.postID),
+      },
+    });
 
     const delPost = await Post.destroy({
       where: {
@@ -96,7 +96,7 @@ router.delete("/delete", async (req, res) => {
       },
     });
 
-    res.status(200).json(delPost)
+    res.status(200).json(delPost);
   } catch (err) {
     console.log(err);
     res.status(400).json(err);

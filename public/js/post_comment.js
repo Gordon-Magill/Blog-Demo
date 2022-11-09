@@ -23,12 +23,13 @@ async function postSubmission() {
 }
 
 async function postComment(event) {
-  event.preventDefault()
-  console.log("\n****************\n\n****************\n\n****************\npostComment route activated!\n****************\n\n****************\n\n****************\n");
+  event.preventDefault();
+  console.log(
+    "\n****************\n\n****************\n\n****************\npostComment route activated!\n****************\n\n****************\n\n****************\n"
+  );
   const commentContent = $("#newCommentTextArea").val().trim();
 
-  let post_id = $("#submitCommentButton").attr('data-post')
-
+  let post_id = $("#submitCommentButton").attr("data-post");
 
   if (commentContent.length > 1) {
     console.log(
@@ -73,7 +74,7 @@ async function editPost() {
       body: JSON.stringify({
         postContent,
         postTitle,
-        postID: editButton.attr('data-post'),
+        postID: editButton.attr("data-post"),
       }),
       headers: {
         "Content-Type": "application/json",
@@ -90,22 +91,22 @@ async function editPost() {
   }
 }
 
-async function deletePost(){
+async function deletePost() {
   const deleteButton = $("#deletePostButton");
   const deletePost = await fetch("/api/post/delete", {
     method: "DELETE",
     body: JSON.stringify({
-      postID: deleteButton.attr('data-post'),
+      postID: deleteButton.attr("data-post"),
     }),
     headers: {
       "Content-Type": "application/json",
     },
-  })
+  });
 
   if (deletePost.ok) {
     document.location.replace("/dashboard");
-    } else {
-      alert("Post deletion failed, bad server response to page");
+  } else {
+    alert("Post deletion failed, bad server response to page");
   }
 }
 
@@ -119,4 +120,4 @@ const editButton = $("#editPostButton");
 editButton.on("click", editPost);
 
 const deleteButton = $("#deletePostButton");
-deleteButton.on("click", deletePost)
+deleteButton.on("click", deletePost);

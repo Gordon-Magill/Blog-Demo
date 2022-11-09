@@ -62,8 +62,6 @@ async function signupHelper(event) {
     } else {
       let errmsg =
         "Credentials did not meet required criteria. Please try again.";
-      errmsg = `${errmsg}+\nServer says: ${newUser.errmsg}`;
-
       alert(errmsg);
     }
   }

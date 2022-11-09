@@ -38,15 +38,14 @@ router.get("/post/:id", async (req, res) => {
 
   // If no page of the right id is found, dump them back to the front page
   if (onePost === null) {
-    res.status(304).redirect('/')
+    res.status(304).redirect("/");
     return;
   }
 
-  onePost = onePost.get({plain:true})
+  onePost = onePost.get({ plain: true });
 
   //   Debugging logs
   console.log("onePost:", onePost);
-
 
   // console.log("plainPost:", plainPost);
 
@@ -64,8 +63,6 @@ router.get("/post/:id", async (req, res) => {
   if (onePost.author_id === req.session.user_id) {
     sameAuthor = true;
   }
-    
-  
 
   //   Render the page with post and session information
   res.render("post", {

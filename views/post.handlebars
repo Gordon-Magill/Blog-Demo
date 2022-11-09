@@ -13,7 +13,7 @@
 
   <div class="row px-3">
     <div class="d-flex flex-column col- customTextBox align-items-center">
-      <p class=" lead pt-3">{{Post.content}}</p>
+      <p class="lead pt-3">{{Post.content}}</p>
     </div>
   </div>
 
@@ -33,8 +33,11 @@
               placeholder="Comment text"
               class="form-control"
             ></textarea><br />
-            <button id="submitCommentButton" class="btn btn-primary" data-post="{{Post.id}}">Submit new
-              comment</button>
+            <button
+              id="submitCommentButton"
+              class="btn btn-primary"
+              data-post="{{Post.id}}"
+            >Submit new comment</button>
           </form>
           <p class="card-text">{{comment.content}}</p>
         </div>
@@ -86,7 +89,7 @@
 
   <br />
   {{#if comments}}
-  <h4>Comments:</h4>
+    <h4>Comments:</h4>
   {{/if}}
   {{#each comments as |comment|}}
     {{!-- <p>Comment #{{@index}}, created at {{formatDate comment.creation_time}}:</p>
