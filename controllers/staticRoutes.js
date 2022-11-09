@@ -37,7 +37,12 @@ router.get("/post/:id", async (req, res) => {
   });
 
   //   Debugging logs
-  // console.log("onePost:", onePost);
+  console.log("onePost:", onePost);
+
+  if (onePost === null) {
+    res.status(304).redirect('/')
+    return;
+  }
   let plainPost = onePost.get({ plain: true });
   // console.log("plainPost:", plainPost);
 

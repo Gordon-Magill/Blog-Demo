@@ -82,6 +82,14 @@ router.delete("/delete", async (req, res) => {
   );
 
   try {
+// Get delete all comments that belong to the post
+
+    const delComments = await Comment.destroy({
+      where: {
+        post_id: parseInt(req.body.postID)
+      }
+    })
+
     const delPost = await Post.destroy({
       where: {
         id: parseInt(req.body.postID),
