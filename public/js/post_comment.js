@@ -19,8 +19,6 @@ async function postSubmission() {
 
     // If the new post was created successfully, send the user back to the dashboard to see it
     if (postRequest.ok) {
-      console.log('Confirming we go to this')
-      // Add a little delay so that the Heroku deployed version actually works - damn you latency
       window.location.replace("/dashboard");
     } else {
       alert("Post sumission failed, bad server response to page");
