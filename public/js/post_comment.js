@@ -23,7 +23,6 @@ async function postSubmission() {
       setTimeout(() => {
         document.location.replace("/dashboard")
       },500)
-      document.location.replace("/dashboard");
     } else {
       alert("Post sumission failed, bad server response to page");
     }
