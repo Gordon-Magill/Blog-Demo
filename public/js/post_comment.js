@@ -19,10 +19,9 @@ async function postSubmission() {
 
     // If the new post was created successfully, send the user back to the dashboard to see it
     if (postRequest.ok) {
+      console.log('Confirming we go to this')
       // Add a little delay so that the Heroku deployed version actually works - damn you latency
-      setTimeout(() => {
-        document.location.replace("/dashboard")
-      },2000)
+      window.location.replace("/dashboard");
     } else {
       alert("Post sumission failed, bad server response to page");
     }
@@ -68,7 +67,7 @@ async function postComment() {
 
     // If the comment was created successfully, reload the page to show it
     if (newComment.ok) {
-      document.location.replace(`/post/${post_id}`);
+      window.location.replace(`/post/${post_id}`);
     } else {
       alert("Comment sumission failed, bad server response to page");
     }
@@ -105,7 +104,7 @@ async function editPost() {
 
     // If the edit was done OK, send the user back to the dashboard
     if (editRequest.ok) {
-      document.location.replace("/dashboard");
+      window.location.replace("/dashboard");
     } else {
       alert("Post edit failed, bad server response to page");
     }
@@ -132,7 +131,7 @@ async function deletePost() {
 
   // If the deletion was done successfully, send the user back to the dashboard to see that the post is gone
   if (deletePost.ok) {
-    document.location.replace("/dashboard");
+    window.location.replace("/dashboard");
   } else {
     alert("Post deletion failed, bad server response to page");
   }
