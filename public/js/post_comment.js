@@ -22,7 +22,7 @@ async function postSubmission() {
       // Add a little delay so that the Heroku deployed version actually works - damn you latency
       setTimeout(() => {
         document.location.replace("/dashboard")
-      },500)
+      },2000)
     } else {
       alert("Post sumission failed, bad server response to page");
     }

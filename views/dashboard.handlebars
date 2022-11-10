@@ -1,32 +1,30 @@
 {{! New post form }}
 {{#if sess.logged_in}}
-  <div class="d-flex col- flex-fill justify-content-around">
-    <div class="card customCard mx-4 mt-3" style="width: 18rem;">
-      <div class="card-body">
-        <form class="">
-          <div class="form-group">
-            <label for="newPostTextArea">Create a new post:</label>
-            <input
-              type="text"
-              id="newPostTitleInput"
-              placeholder="Post title"
-              class="form-control"
-            />
-          </div>
-          <textarea
-            id="newPostTextArea"
-            name="newPostTextArea"
-            rows="4"
-            cols="50"
-            placeholder="Post body"
-            class="form-control"
-          ></textarea>
-          <br />
-          <button id="submitPostButton" class="btn btn-primary">Submit new post</button>
-        </form>
+  <div class="d-flex col- justify-content-around">
+
+    <form class="">
+      <div class="form-group">
+        <label for="newPostTextArea">Create a new post:</label>
+        <input
+          type="text"
+          id="newPostTitleInput"
+          placeholder="Post title"
+          class="form-control"
+        />
       </div>
-    </div>
+      <textarea
+        id="newPostTextArea"
+        name="newPostTextArea"
+        rows="4"
+        cols="50"
+        placeholder="Post body"
+        class="form-control"
+      ></textarea>
+      <br />
+      <button id="submitPostButton" class="btn btn-primary">Submit new post</button>
+    </form>
   </div>
+
 {{/if}}
 
 <div class="col- flex-fill">
